@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV University Course Syllabuses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0f25;
+            color: #e0f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.7em;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #102542;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-bar {
+            position: relative;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            padding: 12px;
+            width: 320px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            outline: none;
+            background-color: #1a2a4e;
+            color: #e0f7fa;
+            font-size: 1em;
+        }
+
+        .search-bar input::placeholder {
+            color: #b0c4de; 
+        }
+
+        .search-bar input:focus {
+            width: 370px;
+            background-color: #2e3b5e;
+            box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
+        }
+
+        .search-bar button {
+            padding: 12px 18px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            background-color: #1976d2;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+        }
+
+        .suggestions {
+            position: absolute;
+            background-color: #1a2a4e;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 320px;
+            z-index: 1;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+            color: #e0f7fa;
+        }
+
+        .suggestion-item:hover {
+            background-color: #1565c0;
+        }
+
+        .subjects {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .subject {
+            padding: 15px;
+            border: 1px solid #1976d2;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #1a2a4e;
+        }
+
+        .subject:hover {
+            transform: rotateY(5deg);
+            box-shadow: 0 8px 20px rgba(21, 101, 192, 0.5);
+        }
+
+        .subject h2 {
+            color: #1976d2;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #1565c0;
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        .social-links {
+            margin: 10px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #e0f7fa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .search-bar input {
+                width: 100%;
+            }
+
+            .subject {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RV University</h1>
+        <P>B.Tech 1st semester Syllabus</p>
+        <p>Discover your subjects!</p>
+    </header>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for a subject..." aria-label="Search for a subject" onkeyup="showSuggestions(this.value)">
+            <button onclick="searchSubject()">Search</button>
+            <div class="suggestions" id="suggestions"></div>
+        </div>
+        <div class="subjects" id="subjects">
+            <div class="subject" id="web">
+                <h2>WEB FUNDAMENTALS AND UX DESIGN</h2>
+                <p><strong>Topics:</strong> HTML, CSS AND JS</p>
+                <p><strong>Credits:</strong> 3</p>
+                <p><strong>Instructor:</strong> SRITAMA BANERJEE</p>
+                <a href="WEB.pdf" class="download-btn" download>Download Syllabus PDF</a>
+            </div>
+            <div class="subject" id="DSCA">
+                <h2>DSCA</h2>
+                <p><strong>Topics:</strong> IOT, PHYSICS</p>
+                <p><strong>Credits:</strong> 4</p>
+                <p><strong>Instructor:</strong> SUNIL KUMAR</p>
+                <a href="dsca.pdf" class="download-btn" download>Download Syllabus PDF</a>
+            </div>
+            <div class="subject" id="es">
+                <h2>EXPLORING SCIENCE</h2>
+                <p><strong>Topics:</strong> SCIENCE.</p>
+                <p><strong>Credits:</strong> 3</p>
+                <p><strong>Instructor:</strong> BHARATH MANCHIKODI</p>
+                <a href="ES.pdf" class="download-btn" download>Download Syllabus PDF</a>
+            </div>
+            <div class="subject" id="maths">
+                <h2>DISCRETE MATHS</h2>
+                <p><strong>Topics:</strong> MATHEMATICS AND GRAPH THEORY</p>
+                <p><strong>Credits:</strong> 3</p>
+                <p><strong>Instructor:</strong> CHAKRAVARTHULA S K</p>
+                <a href="DIS.pdf" class="download-btn" download>Download Syllabus PDF</a>
+            </div>
+            <div class="subject" id="si">
+                <h2>STRUCTURED INNOVATION</h2>
+                <p><strong>Topics:</strong> ENTREPRENEURSHIP, INNOVATION AND SKILL ENHANCEMENT</p>
+                <p><strong>Credits:</strong> 4</p>
+                <p><strong>Instructor:</strong> PHANI KUMAR </p>
+                <a href="sidt.pdf" class="download-btn" download>Download Syllabus PDF</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Follow RV University On :-</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/RV.University1/" target="_blank">Facebook</a>
+            <a href="https://www.linkedin.com/school/rv-university/" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com/rv.university?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        const subjects = [
+            "WEB FUNDAMENTALS AND UX DESIGN",
+            "DSCA",
+            "EXPLORING SCIENCE",
+            "DISCRETE MATHS",
+            "STRUCTURED INNOVATION"
+        ];
+
+        function showSuggestions(value) {
+            const suggestions = document.getElementById("suggestions");
+            suggestions.innerHTML = "";
+            if (value.length === 0) {
+                suggestions.style.display = "none";
+                return;
+            }
+            const filteredSubjects = subjects.filter(subject =>
+                subject.toLowerCase().includes(value.toLowerCase())
+            );
+
+            if (filteredSubjects.length > 0) {
+                filteredSubjects.forEach(subject => {
+                    const div = document.createElement("div");
+                    div.className = "suggestion-item";
+                    div.textContent = subject;
+                    div.onclick = function() {
+                        document.getElementById("searchInput").value = subject;
+                        suggestions.style.display = "none";
+                    };
+                    suggestions.appendChild(div);
+                });
+                suggestions.style.display = "block";
+            } else {
+                suggestions.style.display = "none";
+            }
+        }
+
+        function searchSubject() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const subjectElements = document.querySelectorAll(".subject");
+            subjectElements.forEach(subject => {
+                const subjectName = subject.querySelector("h2").textContent.toLowerCase();
+                subject.style.display = subjectName.includes(searchInput) ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
